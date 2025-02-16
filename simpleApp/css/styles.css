@@ -1,0 +1,77 @@
+/* Add these styles to your styles.css file */
+
+/* Custom Scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #59a4f5, #00ff88);
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #0056b3, #00cc6a);
+}
+
+/* Custom Scrollbar for Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #388de9 #f1f1f1;
+}
+
+/* Custom scrollbar for textarea */
+.input-group textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.input-group textarea::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.input-group textarea::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #007bff, #00ff88);
+    border-radius: 5px;
+    border: 2px solid #f1f1f1;
+}
+
+.input-group textarea::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #0056b3, #00cc6a);
+}
+
+/* Add smooth scroll behavior to the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: Add custom scrollbar to any overflow content */
+.contact-info {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.contact-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-info::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.contact-info::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #4994e3, #00ff88);
+    border-radius: 5px;
+    border: 2px solid #f1f1f1;
+}
+
+.contact-info::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #66abf5, #00cc6a);
+}
