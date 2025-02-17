@@ -1,2 +1,2 @@
 # simple-App
- home,bout,contact
+ home,about,contact
