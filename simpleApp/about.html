@@ -1,16 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="css/about-css.css">
+    <title>About Us - CreativeSpace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Arial', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 4rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .about-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9ff;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #007bff22, #00ff8822);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .about-header h1 {
+            font-size: 4rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about-header p {
+            font-size: 1.5rem;
+            color: #555;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .story-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .story-section h2 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+        }
+
+        .story-section p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 6rem 0;
+        }
+
+        .team-member {
+            background: #f8f9ff;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #007bff, #00ff88);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            margin: 6rem 0;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #007bff, #00ff88);
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #007bff;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            left: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            right: -10px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-header h1 {
+                font-size: 3rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(even) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-header p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
     <nav class="navbar">
+        <a href="index.html" class="logo">CreativeSpace</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
@@ -20,17 +313,18 @@
 
     <header class="about-header">
         <div>
-            <h1>About Us</h1>
-            <p>Get to know our story and our amazing team</p>
+            <h1>Our Journey</h1>
+            <p>Discover the story behind our passion for digital innovation</p>
         </div>
     </header>
 
     <main class="about-content">
-        <h2>Our Story</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.</p>
+        <section class="story-section">
+            <h2>Our Story</h2>
+            <p>We started with a simple vision: to create digital experiences that not only meet the highest standards of design and functionality but also inspire and transform. Our journey has been marked by continuous innovation, unwavering dedication to quality, and a deep commitment to our clients' success.</p>
+        </section>
 
-        <div class="team-section">
+        <section class="team-section">
             <div class="team-member">
                 <div class="member-image"></div>
                 <h3>John Doe</h3>
@@ -46,29 +340,59 @@
                 <h3>Mike Johnson</h3>
                 <p>Lead Developer</p>
             </div>
-        </div>
+        </section>
 
-        <div class="timeline">
+        <section class="timeline">
             <div class="timeline-item">
                 <h3>2020</h3>
-                <p>Company Founded</p>
+                <p>Founded with a vision to transform digital experiences</p>
             </div>
             <div class="timeline-item">
                 <h3>2021</h3>
-                <p>Expanded to 50 Employees</p>
+                <p>Grew to 50 talented team members worldwide</p>
             </div>
             <div class="timeline-item">
                 <h3>2022</h3>
-                <p>Opened International Offices</p>
+                <p>Expanded operations globally with new international offices</p>
             </div>
             <div class="timeline-item">
                 <h3>2023</h3>
-                <p>Reached 1000+ Clients</p>
+                <p>Celebrated serving over 1000 satisfied clients</p>
+            </div>
+        </section>
+    </main>
+    <!-- Added Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Connect With Us</h3>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📱</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="Instagram">📸</a>
             </div>
         </div>
-    </main>
-
-    <script src="js/about-js.js"></script>
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+    </div>
+</footer>
 </body>
-
 </html>
