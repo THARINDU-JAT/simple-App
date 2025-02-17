@@ -229,6 +229,14 @@
             text-align: center;
         }
 
+        .officer-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 1024px) {
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -262,6 +270,42 @@
                 padding: 2rem;
             }
         }
+        .shadow-main {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.team-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+    width: 100%;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.member-image {
+    width: 200px;
+    
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Placeholder color */
+    margin: 0 auto 1.5rem;
+}
+
+.team-member h3 {
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    color: #666;
+}
+
     </style>
      <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -284,7 +328,7 @@
 
     <main class="contact-content">
         <div class="contact-grid">
-            <div class="contact-form">
+            <div class="contact-form shadow-main">
                 <h2>Send us a Message</h2>
                 <form id="contactForm">
                     <div class="input-group">
@@ -311,6 +355,14 @@
             </div>
             <div class="contact-info">
                 <h2>Contact Information</h2>
+                <section class="team-section">
+                    <div class="team-member">
+                        <div class="member-image"></div>
+                        <h3>John Doe</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                
+                </section>
                 <div class="info-item">
                     <i>📍</i>
                     <div>
@@ -322,14 +374,15 @@
                     <i>📧</i>
                     <div>
                         <h3>Email</h3>
-                        <p>contact@example.com</p>
+                        <p>oicthanamalwila@gmail.com</p>
+                        
                     </div>
                 </div>
                 <div class="info-item">
                     <i>📞</i>
                     <div>
                         <h3>Phone</h3>
-                        <p>+1 234 567 890</p>
+                        <p>070 258 7448</p>
                     </div>
                 </div>
                 <div class="info-item">
@@ -340,6 +393,9 @@
                     </div>
                 </div>
             </div>
+           
+       
+
         </div>
     </main>
 <!-- Added Footer -->
